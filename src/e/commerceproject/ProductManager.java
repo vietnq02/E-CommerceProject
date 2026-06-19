@@ -33,13 +33,13 @@ public class ProductManager {
     }
 
     public void displayProducts() {
-        System.out.println("+-------+----------------------+-----------+------+");
+        System.out.println("+-------+----------------------+-----------+---------+");
         System.out.println("| ID    | Name                 |     Price | Rating |");
-        System.out.println("+-------+----------------------+-----------+------+");
+        System.out.println("+-------+----------------------+-----------+---------+");
         for (Product p : products) {
             System.out.println(p);
         }
-        System.out.println("+-------+----------------------+-----------+------+");
+        System.out.println("+-------+----------------------+-----------+---------+");
         System.out.println("Total: " + products.size() + " product(s).");
     }
 }

@@ -42,4 +42,5 @@ public class ProductManager {
         System.out.println("+-------+----------------------+-----------+---------+");
         System.out.println("Total: " + products.size() + " product(s).");
     }
+    
 }

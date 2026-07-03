@@ -4,13 +4,10 @@
  */
 package e.commerceproject;
 
-/**
- *
- * @author Admin
- */
 import java.util.Scanner;
+
 public class ECommerceProject {
-public static void main(String[] args) {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         ProductManager manager = new ProductManager();
@@ -32,39 +29,30 @@ public static void main(String[] args) {
             choice = sc.nextInt();
 
             switch (choice) {
-
                 case 1:
                     manager.displayProducts();
                     break;
-
                 case 2:
                     System.out.println("Add Product - Coming soon...");
                     break;
-
                 case 3:
                     System.out.println("Update Product - Coming soon...");
                     break;
-
                 case 4:
                     System.out.println("Delete Product - Coming soon...");
                     break;
-
                 case 5:
-                    System.out.println("Filter By Price - Coming soon...");
+                    manager.filterByPrice();
                     break;
-
                 case 6:
                     System.out.println("Filter By Name - Coming soon...");
                     break;
-
                 case 7:
                     System.out.println("Filter By Rating - Coming soon...");
                     break;
-
                 case 0:
                     System.out.println("Good bye!");
                     break;
-
                 default:
                     System.out.println("Invalid choice!");
             }

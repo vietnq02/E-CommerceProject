@@ -5,6 +5,7 @@
 package e.commerceproject;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -42,5 +43,45 @@ public class ProductManager {
         System.out.println("+-------+----------------------+-----------+---------+");
         System.out.println("Total: " + products.size() + " product(s).");
     }
-    
+
+    public void filterByPrice() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter minimum price: ");
+        String minInput = sc.next();
+        double minPrice = Double.parseDouble(minInput.replace(".",""));
+
+        System.out.print("Enter maximum price: ");
+        String maxInput = sc.next();
+        double maxPrice = Double.parseDouble(maxInput.replace(".",""));
+
+        if (minPrice < 0 || maxPrice < 0) {
+            System.out.println("Price cannot be negative.");
+            return;
+        }
+
+        if (minPrice > maxPrice) {
+            System.out.println("Minimum price must be less than maximum price.");
+            return;
+        }
+
+        boolean found = false;
+
+        System.out.println("+-------+----------------------+-----------+---------+");
+        System.out.println("| ID    | Name                 |     Price | Rating |");
+        System.out.println("+-------+----------------------+-----------+---------+");
+
+        for (Product p : products) {
+            if (p.getPrice() >= minPrice && p.getPrice() <= maxPrice) {
+                System.out.println(p);
+                found = true;
+            }
+        }
+
+        System.out.println("+-------+----------------------+-----------+---------+");
+
+        if (!found) {
+            System.out.println("No products found in this price range.");
+        }
+    }
 }

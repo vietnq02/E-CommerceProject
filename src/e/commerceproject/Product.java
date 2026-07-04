@@ -44,7 +44,7 @@ public class Product {
     @Override
     public String toString() {
         NumberFormat vn = NumberFormat.getInstance(new Locale("vi", "VN"));
-        return String.format("| %-5s | %-20s | %15s ₫ | %d/5 |",
-                id, name, vn.format(price), rating);
+        return String.format("| %-5s | %-20s | %15s ₫ | %-5s |",
+                id, name, vn.format(price), rating + "/5");
     }
 }

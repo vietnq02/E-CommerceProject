@@ -191,4 +191,60 @@ public class ProductManager {
             System.out.println("No products found matching \"" + keyword + "\".");
         }
     }
+
+//    public void filterByRating() {
+//        System.out.print("Enter rating from 1 to 5: ");
+//        int rating = sc.nextInt();
+//
+//        if (rating < 1 || rating > 5) {
+//            System.out.println("Rating must be from 1 to 5.");
+//            return;
+//        }
+//
+//        boolean found = false;
+//
+//        System.out.println("+-------+----------------------+-----------+---------+");
+//        System.out.println("| ID    | Name                 |     Price | Rating |");
+//        System.out.println("+-------+----------------------+-----------+---------+");
+//
+//        for (Product p : products) {
+//            if (p.getRating() == rating) {
+//                System.out.println(p);
+//                found = true;
+//            }
+//        }
+//
+//        System.out.println("+-------+----------------------+-----------+---------+");
+//
+//        if (!found) {
+//            System.out.println("No products found with this rating.");
+//        }
+//    }
+    public void filterByRating() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter rating from 1 to 5: ");
+        int rating = sc.nextInt();
+
+        if (rating < 1 || rating > 5) {
+            System.out.println("Rating must be from 1 to 5.");
+            return;
+        }
+
+        boolean found = false;
+
+        printHeader();
+
+        for (Product p : products) {
+            if (p.getRating() == rating) {
+                System.out.println(p);
+                found = true;
+            }
+        }
+
+        printFooter();
+
+        if (!found) {
+            System.out.println("No products found with this rating.");
+        }
+    }
 }

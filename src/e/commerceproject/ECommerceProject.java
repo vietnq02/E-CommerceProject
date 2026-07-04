@@ -49,7 +49,7 @@ public class ECommerceProject {
                     manager.filterByPrice();
                     break;
                 case 7:
-                    System.out.println("Filter By Rating - Coming soon...");
+                    manager.filterByRating();
                     break;
                 case 0:
                     System.out.println("Good bye!");

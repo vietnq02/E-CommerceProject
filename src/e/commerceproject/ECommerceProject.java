@@ -7,6 +7,7 @@ package e.commerceproject;
 import java.util.Scanner;
 
 public class ECommerceProject {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -20,8 +21,8 @@ public class ECommerceProject {
             System.out.println("2. Add Product");
             System.out.println("3. Update Product");
             System.out.println("4. Delete Product");
-            System.out.println("5. Filter By Price");
-            System.out.println("6. Filter By Name");
+            System.out.println("5. Filter By Name");
+            System.out.println("6. Filter By Price");
             System.out.println("7. Filter By Rating");
             System.out.println("0. Exit");
             System.out.print("Choose: ");
@@ -42,10 +43,10 @@ public class ECommerceProject {
                     System.out.println("Delete Product - Coming soon...");
                     break;
                 case 5:
-                    manager.filterByPrice();
+                    manager.filterByName();
                     break;
                 case 6:
-                    System.out.println("Filter By Name - Coming soon...");
+                    manager.filterByPrice();
                     break;
                 case 7:
                     System.out.println("Filter By Rating - Coming soon...");

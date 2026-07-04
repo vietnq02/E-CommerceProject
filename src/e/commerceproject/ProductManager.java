@@ -35,7 +35,7 @@ public class ProductManager {
 
     public void displayProducts() {
         System.out.println("+-------+----------------------+-----------+---------+");
-        System.out.println("| ID    | Name                 |     Price | Rating |");
+        System.out.println("| ID    | Name                 | Price     | Rating  |");
         System.out.println("+-------+----------------------+-----------+---------+");
         for (Product p : products) {
             System.out.println(p);
@@ -49,11 +49,11 @@ public class ProductManager {
 
         System.out.print("Enter minimum price: ");
         String minInput = sc.next();
-        double minPrice = Double.parseDouble(minInput.replace(".",""));
+        double minPrice = Double.parseDouble(minInput.replace(".", ""));
 
         System.out.print("Enter maximum price: ");
         String maxInput = sc.next();
-        double maxPrice = Double.parseDouble(maxInput.replace(".",""));
+        double maxPrice = Double.parseDouble(maxInput.replace(".", ""));
 
         if (minPrice < 0 || maxPrice < 0) {
             System.out.println("Price cannot be negative.");
@@ -68,7 +68,7 @@ public class ProductManager {
         boolean found = false;
 
         System.out.println("+-------+----------------------+-----------+---------+");
-        System.out.println("| ID    | Name                 |     Price | Rating |");
+        System.out.println("| ID    | Name                 | Price     | Rating  |");
         System.out.println("+-------+----------------------+-----------+---------+");
 
         for (Product p : products) {
@@ -82,6 +82,35 @@ public class ProductManager {
 
         if (!found) {
             System.out.println("No products found in this price range.");
+        }
+    }
+
+    public void filterByName() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter product name to search: ");
+        String keyword = sc.nextLine().trim();
+
+        if (keyword.isEmpty()) {
+            System.out.println("Keyword cannot be empty.");
+            return;
+        }
+
+        String keywordLower = keyword.toLowerCase();
+        boolean found = false;
+
+        System.out.println("+-------+----------------------+-----------+---------+");
+        System.out.println("| ID    | Name                 | Price     | Rating  |");
+        System.out.println("+-------+----------------------+-----------+---------+");
+        for (Product p : products) {
+            if (p.getName().toLowerCase().contains(keywordLower)) {
+                System.out.println(p);
+                found = true;
+            }
+        }
+        System.out.println("+-------+----------------------+-----------+---------+");
+
+        if (!found) {
+            System.out.println("No products found matching \"" + keyword + "\".");
         }
     }
 }

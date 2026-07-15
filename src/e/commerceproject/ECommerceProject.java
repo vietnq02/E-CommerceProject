@@ -34,7 +34,7 @@ public class ECommerceProject {
                     manager.displayProducts();
                     break;
                 case 2:
-                    System.out.println("Add Product - Coming soon...");
+                    manager.addProduct();
                     break;
                 case 3:
                     System.out.println("Update Product - Coming soon...");

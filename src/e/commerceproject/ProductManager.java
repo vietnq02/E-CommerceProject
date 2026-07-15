@@ -248,6 +248,78 @@ public class ProductManager {
         }
     }
 
+    public void addProduct() {
+        Scanner sc = new Scanner(System.in);
+
+        // Nhập ID sản phẩm
+        System.out.print("Enter product ID: ");
+        String id = sc.nextLine().trim();
+
+        if (id.isEmpty()) {
+            System.out.println("Product ID cannot be empty.");
+            return;
+        }
+
+        // Kiểm tra ID đã tồn tại chưa (không được trùng)
+        for (Product p : products) {
+            if (p.getId().equalsIgnoreCase(id)) {
+                System.out.println("Product ID already exists. Please use a different ID.");
+                return;
+            }
+        }
+
+        // Nhập tên sản phẩm
+        System.out.print("Enter product name: ");
+        String name = sc.nextLine().trim();
+
+        if (name.isEmpty()) {
+            System.out.println("Product name cannot be empty.");
+            return;
+        }
+
+        // Nhập giá sản phẩm
+        // Dùng cách xử lý giống filterByPrice: bỏ dấu "." để parse số cho đúng (vd: 1.500.000 -> 1500000)
+        System.out.print("Enter product price: ");
+        String priceInput = sc.next();
+        double price;
+        try {
+            price = Double.parseDouble(priceInput.replace(".", ""));
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid price format.");
+            return;
+        }
+
+        if (price < 0) {
+            System.out.println("Price cannot be negative.");
+            return;
+        }
+
+        // Nhập rating (đánh giá sao) từ 1 đến 5
+        System.out.print("Enter rating from 1 to 5: ");
+        int rating;
+        try {
+            rating = sc.nextInt();
+        } catch (Exception e) {
+            System.out.println("Invalid rating format.");
+            return;
+        }
+
+        if (rating < 1 || rating > 5) {
+            System.out.println("Rating must be from 1 to 5.");
+            return;
+        }
+
+        // Tạo sản phẩm mới và thêm vào danh sách
+        Product newProduct = new Product(id, name, price, rating);
+        products.add(newProduct);
+
+        // In ra sản phẩm vừa thêm để xác nhận
+        System.out.println("Product added successfully:");
+        printHeader();
+        System.out.println(newProduct);
+        printFooter();
+    }
+
     public void deleteProduct() {
         Scanner sc = new Scanner(System.in);
 

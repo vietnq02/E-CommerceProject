@@ -43,16 +43,16 @@ public class ProductManager {
         System.out.println("+-------+----------------------+-------------------+-------+");
     }
 
-//    public void displayProducts() {
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        System.out.println("| ID    | Name                 | Price     | Rating  |");
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        for (Product p : products) {
-//            System.out.println(p);
-//        }
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        System.out.println("Total: " + products.size() + " product(s).");
-//    }
+    // public void displayProducts() {
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // System.out.println("| ID | Name | Price | Rating |");
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // for (Product p : products) {
+    // System.out.println(p);
+    // }
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // System.out.println("Total: " + products.size() + " product(s).");
+    // }
     public void displayProducts() {
         printHeader();
         for (Product p : products) {
@@ -62,46 +62,46 @@ public class ProductManager {
         System.out.println("Total: " + products.size() + " product(s).");
     }
 
-//    public void filterByPrice() {
-//        Scanner sc = new Scanner(System.in);
-//
-//        System.out.print("Enter minimum price: ");
-//        String minInput = sc.next();
-//        double minPrice = Double.parseDouble(minInput.replace(".", ""));
-//
-//        System.out.print("Enter maximum price: ");
-//        String maxInput = sc.next();
-//        double maxPrice = Double.parseDouble(maxInput.replace(".", ""));
-//
-//        if (minPrice < 0 || maxPrice < 0) {
-//            System.out.println("Price cannot be negative.");
-//            return;
-//        }
-//
-//        if (minPrice > maxPrice) {
-//            System.out.println("Minimum price must be less than maximum price.");
-//            return;
-//        }
-//
-//        boolean found = false;
-//
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        System.out.println("| ID    | Name                 | Price     | Rating  |");
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//
-//        for (Product p : products) {
-//            if (p.getPrice() >= minPrice && p.getPrice() <= maxPrice) {
-//                System.out.println(p);
-//                found = true;
-//            }
-//        }
-//
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//
-//        if (!found) {
-//            System.out.println("No products found in this price range.");
-//        }
-//    }
+    // public void filterByPrice() {
+    // Scanner sc = new Scanner(System.in);
+    //
+    // System.out.print("Enter minimum price: ");
+    // String minInput = sc.next();
+    // double minPrice = Double.parseDouble(minInput.replace(".", ""));
+    //
+    // System.out.print("Enter maximum price: ");
+    // String maxInput = sc.next();
+    // double maxPrice = Double.parseDouble(maxInput.replace(".", ""));
+    //
+    // if (minPrice < 0 || maxPrice < 0) {
+    // System.out.println("Price cannot be negative.");
+    // return;
+    // }
+    //
+    // if (minPrice > maxPrice) {
+    // System.out.println("Minimum price must be less than maximum price.");
+    // return;
+    // }
+    //
+    // boolean found = false;
+    //
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // System.out.println("| ID | Name | Price | Rating |");
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    //
+    // for (Product p : products) {
+    // if (p.getPrice() >= minPrice && p.getPrice() <= maxPrice) {
+    // System.out.println(p);
+    // found = true;
+    // }
+    // }
+    //
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    //
+    // if (!found) {
+    // System.out.println("No products found in this price range.");
+    // }
+    // }
     public void filterByPrice() {
         Scanner sc = new Scanner(System.in);
 
@@ -137,34 +137,34 @@ public class ProductManager {
         }
     }
 
-//    public void filterByName() {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.print("Enter product name to search: ");
-//        String keyword = sc.nextLine().trim();
-//
-//        if (keyword.isEmpty()) {
-//            System.out.println("Keyword cannot be empty.");
-//            return;
-//        }
-//
-//        String keywordLower = keyword.toLowerCase();
-//        boolean found = false;
-//
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        System.out.println("| ID    | Name                 | Price     | Rating  |");
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        for (Product p : products) {
-//            if (p.getName().toLowerCase().contains(keywordLower)) {
-//                System.out.println(p);
-//                found = true;
-//            }
-//        }
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//
-//        if (!found) {
-//            System.out.println("No products found matching \"" + keyword + "\".");
-//        }
-//    }
+    // public void filterByName() {
+    // Scanner sc = new Scanner(System.in);
+    // System.out.print("Enter product name to search: ");
+    // String keyword = sc.nextLine().trim();
+    //
+    // if (keyword.isEmpty()) {
+    // System.out.println("Keyword cannot be empty.");
+    // return;
+    // }
+    //
+    // String keywordLower = keyword.toLowerCase();
+    // boolean found = false;
+    //
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // System.out.println("| ID | Name | Price | Rating |");
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // for (Product p : products) {
+    // if (p.getName().toLowerCase().contains(keywordLower)) {
+    // System.out.println(p);
+    // found = true;
+    // }
+    // }
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    //
+    // if (!found) {
+    // System.out.println("No products found matching \"" + keyword + "\".");
+    // }
+    // }
     public void filterByName() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter product name to search: ");
@@ -192,34 +192,34 @@ public class ProductManager {
         }
     }
 
-//    public void filterByRating() {
-//        System.out.print("Enter rating from 1 to 5: ");
-//        int rating = sc.nextInt();
-//
-//        if (rating < 1 || rating > 5) {
-//            System.out.println("Rating must be from 1 to 5.");
-//            return;
-//        }
-//
-//        boolean found = false;
-//
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//        System.out.println("| ID    | Name                 |     Price | Rating |");
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//
-//        for (Product p : products) {
-//            if (p.getRating() == rating) {
-//                System.out.println(p);
-//                found = true;
-//            }
-//        }
-//
-//        System.out.println("+-------+----------------------+-----------+---------+");
-//
-//        if (!found) {
-//            System.out.println("No products found with this rating.");
-//        }
-//    }
+    // public void filterByRating() {
+    // System.out.print("Enter rating from 1 to 5: ");
+    // int rating = sc.nextInt();
+    //
+    // if (rating < 1 || rating > 5) {
+    // System.out.println("Rating must be from 1 to 5.");
+    // return;
+    // }
+    //
+    // boolean found = false;
+    //
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    // System.out.println("| ID | Name | Price | Rating |");
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    //
+    // for (Product p : products) {
+    // if (p.getRating() == rating) {
+    // System.out.println(p);
+    // found = true;
+    // }
+    // }
+    //
+    // System.out.println("+-------+----------------------+-----------+---------+");
+    //
+    // if (!found) {
+    // System.out.println("No products found with this rating.");
+    // }
+    // }
     public void filterByRating() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter rating from 1 to 5: ");
@@ -245,6 +245,47 @@ public class ProductManager {
 
         if (!found) {
             System.out.println("No products found with this rating.");
+        }
+    }
+
+    public void deleteProduct() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter product ID to delete: ");
+        String id = sc.nextLine().trim();
+
+        if (id.isEmpty()) {
+            System.out.println("Product ID cannot be empty.");
+            return;
+        }
+
+        Product productToDelete = null;
+
+        for (Product p : products) {
+            if (p.getId().equalsIgnoreCase(id)) {
+                productToDelete = p;
+                break;
+            }
+        }
+
+        if (productToDelete == null) {
+            System.out.println("Product not found.");
+            return;
+        }
+
+        System.out.println("Product found:");
+        printHeader();
+        System.out.println(productToDelete);
+        printFooter();
+
+        System.out.print("Are you sure you want to delete this product? (Y/N): ");
+        String confirm = sc.nextLine().trim();
+
+        if (confirm.equalsIgnoreCase("Y")) {
+            products.remove(productToDelete);
+            System.out.println("Product deleted successfully.");
+        } else {
+            System.out.println("Delete cancelled.");
         }
     }
 }

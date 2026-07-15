@@ -40,7 +40,7 @@ public class ECommerceProject {
                     System.out.println("Update Product - Coming soon...");
                     break;
                 case 4:
-                    System.out.println("Delete Product - Coming soon...");
+                    manager.deleteProduct();
                     break;
                 case 5:
                     manager.filterByName();

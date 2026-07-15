@@ -6,6 +6,7 @@ package e.commerceproject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
 
 /**
  *
@@ -15,9 +16,16 @@ public class ProductManager {
 
     private ArrayList<Product> products;
 
+    private static final String FILE_NAME = "products.dat";
+
     public ProductManager() {
-        products = new ArrayList<>();
-        loadSampleData();
+        products = loadFromFile();
+
+        if (products == null || products.isEmpty()) {
+            products = new ArrayList<>();
+            loadSampleData();
+            saveToFile();
+        }
     }
 
     private void loadSampleData() {
@@ -248,25 +256,37 @@ public class ProductManager {
         }
     }
 
+    // Hàm phụ: tự động sinh ID mới dựa theo ID lớn nhất đang có trong danh sách
+    // Ví dụ: đang có P01 -> P10, thì ID mới sẽ là P11
+    private String generateNewId() {
+        int maxNumber = 0;
+
+        for (Product p : products) {
+            String id = p.getId(); // vd: "P01"
+            // Bỏ ký tự "P" ở đầu, chỉ lấy phần số phía sau
+            String numberPart = id.replaceAll("[^0-9]", ""); // loại bỏ mọi ký tự không phải số
+
+            try {
+                int number = Integer.parseInt(numberPart);
+                if (number > maxNumber) {
+                    maxNumber = number;
+                }
+            } catch (NumberFormatException e) {
+                // Nếu ID không đúng format số thì bỏ qua, không tính
+            }
+        }
+
+        int newNumber = maxNumber + 1;
+
+        // Format lại thành 2 chữ số, vd: 1 -> "01", 11 -> "11"
+        return "P" + String.format("%02d", newNumber);
+    }
+
     public void addProduct() {
         Scanner sc = new Scanner(System.in);
 
-        // Nhập ID sản phẩm
-        System.out.print("Enter product ID: ");
-        String id = sc.nextLine().trim();
-
-        if (id.isEmpty()) {
-            System.out.println("Product ID cannot be empty.");
-            return;
-        }
-
-        // Kiểm tra ID đã tồn tại chưa (không được trùng)
-        for (Product p : products) {
-            if (p.getId().equalsIgnoreCase(id)) {
-                System.out.println("Product ID already exists. Please use a different ID.");
-                return;
-            }
-        }
+        // Tự động sinh ID, không cần hỏi user nữa
+        String id = generateNewId();
 
         // Nhập tên sản phẩm
         System.out.print("Enter product name: ");
@@ -312,6 +332,7 @@ public class ProductManager {
         // Tạo sản phẩm mới và thêm vào danh sách
         Product newProduct = new Product(id, name, price, rating);
         products.add(newProduct);
+        saveToFile();
 
         // In ra sản phẩm vừa thêm để xác nhận
         System.out.println("Product added successfully:");
@@ -355,9 +376,42 @@ public class ProductManager {
 
         if (confirm.equalsIgnoreCase("Y")) {
             products.remove(productToDelete);
+            saveToFile();
             System.out.println("Product deleted successfully.");
         } else {
             System.out.println("Delete cancelled.");
+        }
+    }
+
+    private void saveToFile() {
+        try ( ObjectOutputStream oos
+                = new ObjectOutputStream(
+                        new FileOutputStream(FILE_NAME))) {
+
+            oos.writeObject(products);
+
+        } catch (IOException e) {
+            System.out.println("Error saving data: " + e.getMessage());
+        }
+    }
+
+    private ArrayList<Product> loadFromFile() {
+
+        File file = new File(FILE_NAME);
+
+        if (!file.exists()) {
+            return null;
+        }
+
+        try ( ObjectInputStream ois
+                = new ObjectInputStream(
+                        new FileInputStream(FILE_NAME))) {
+
+            return (ArrayList<Product>) ois.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error loading data: " + e.getMessage());
+            return null;
         }
     }
 }

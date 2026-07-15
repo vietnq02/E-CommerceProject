@@ -6,12 +6,15 @@ package e.commerceproject;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.io.Serializable;
 
 /**
  *
  * @author Admin
  */
-public class Product {
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String id;
     private String name;

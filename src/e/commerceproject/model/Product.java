@@ -2,10 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package e.commerceproject;
+package e.commerceproject.model;
 
-import java.text.NumberFormat;
-import java.util.Locale;
 import java.io.Serializable;
 
 /**
@@ -13,8 +11,6 @@ import java.io.Serializable;
  * @author Admin
  */
 public class Product implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     private String id;
     private String name;
@@ -44,10 +40,25 @@ public class Product implements Serializable {
         return rating;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
-        NumberFormat vn = NumberFormat.getInstance(new Locale("vi", "VN"));
-        return String.format("| %-5s | %-20s | %15s ₫ | %-5s |",
-                id, name, vn.format(price), rating + "/5");
+        return String.format("| %-5s | %-20s | %-13.0f | %-6s |",
+                id, name, price, rating + "/5");
     }
 }
